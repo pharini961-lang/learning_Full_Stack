@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <head>
+        <title>Mark sheet</title>
+         <style>
+         body{
+            background-image: url("https://img.freepik.com/free-vector/simple-blue-gradient-background-vector-business_53876-140900.jpg?semt=ais_hybrid&w=740&q=80");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-x: center;
+            font-family: Arial, Helvetica, sans-serif;
+         }
+         h1{
+            background-color: lightblue;
+            border-radius: 25px;
+            padding: 10px;
+            border: 3px solid navy;
+         }
+         .info
+         {
+            background-color:bisque;
+            border-radius: 25px;
+            padding: 15px;
+            border: 3px solid brown;
+            width: 50px
+            margin:auto;
+         }
+         .space{
+            margin-right: 10px;
+         }
+         .reportcard{
+            background-position: center;
+            margin-top: 20px;
+            background-color:whitesmoke;
+            border-radius: 15px;
+            padding: 15px;
+            border:3px solid plum;
+            width: 60%;
+            margin:30px;
+            
+         }
+         #image{
+            position:absolute;
+            bottom: 75px;
+            right: 20px;
+            width: 350px;
+            top: 460px;
+            
+            
+         }
+        
+        </style>
+    </head>
+    <body>
+        <div class="info">
+            <center>
+                <h1>ABC Public Schoool , Mumbai</h1>
+            </center>
+            <hr>
+            
+            <center>
+                <h2>Student Information</h2>
+            </center>
+            <label for="Name">Student's Name</label>
+            <input id="nam" type="text" placeholder="Enter student's name">
+            <br>
+            <br>
+            <label for="Roll no">Roll no</label>
+            <input id="roll" type="number" min="1" max="100" placeholder="Enter student's roll no">
+            <br>
+            <br>
+            <label for="class">Class</label>
+            <input id="classs" type="number" min="1" max="12" placeholder="Enter class">
+            <br>
+            <br>
+            <label for="english">English</label>
+            <input id="emark" type="number"  class="space" min="0" max="100" placeholder="Enter english mark">
+            <label for="Language">Language</label>
+            <input id="lmark" type="number" class="space" min="0" max="100" placeholder="Enter language mark">
+            <label for="mathematics">Mathematics</label>
+            <input id="mmark" type="number" class="space" min="0" max="100" placeholder="Enter mathematics mark">
+            <label for="Science">Science</label>
+            <input id="smark" type="number" class="space" min="0" max="100" placeholder="Enter Science mark">
+            <label for="ss">Social Studies</label>
+            <input id="ssmark" type="number" class="space" min="0" max="100" placeholder="Enter ss mark">
+            
+            <br>
+            <br>
+            <button id="resultt" onclick="score()">Result</button>
+            <br>
+            <hr>
+        </div>
+        <div class="reportcard">
+         <center> <p id="dd"><i>YOUR RESULT WILL BE VISIBLE HERE...</i></p></center>
+         
+        </div>
+
+        <script>
+            function score()
+         {
+            //selecting and storing the input value
+
+           let a1=document.getElementById("nam").value;
+            
+           let b1=document.getElementById("roll").value;
+           
+           let c1=document.getElementById("classs").value;
+           
+           let m11=document.getElementById("emark").value;
+           
+           let m22=document.getElementById("lmark").value;
+        
+           let m33=document.getElementById("mmark").value;
+           
+           let m44=document.getElementById("smark").value;
+           
+           let m55=document.getElementById("ssmark").value;
+           
+           //calculating the total and percentage
+           //use number function so that the value change from string to number
+
+           const total=Number(m11)+Number(m22)+Number(m33)+Number(m44)+Number(m55);
+           const percentage=(total/500)*100;
+
+           let suggestion="";
+
+            //if for suggestion
+
+           if(percentage>=80)
+           { 
+            suggestion="You did a great job...Keep it up";
+           }
+           else if(percentage>=60 && percentage<80)
+           {
+            suggestion="Do better next time";
+           }
+           else{
+            suggestion="Word Hard !!!";
+           }
+           const x=document.getElementsByClassName("reportcard")[0];
+
+           //use backtick key(shift + keybelow esc) to write html code in .js to display
+
+           x.innerHTML=`
+           <center>
+             <h3>MARK CARD</h3>
+             
+             <p><strong>Name: </strong> ${a1}</p>
+             <p><strong>Class: </strong> ${c1}</p>
+             <p><strong>Roll Number: </strong> ${b1}</p>
+             <hr>
+             <p><strong>English Mark: </strong>${m11}</p>
+             <p><strong>Language Mark: </strong>${m22}</p>
+             <p><strong>Mathematics Mark: </strong>${m33}</p>
+             <p><strong>Science Mark: </strong>${m44}</p>
+             <p><strong>Social Studies Mark: </strong>${m55}</p>
+             <hr>
+             <p><strong>TOLTAL MARK: </strong>${total}/500</p>
+             <p><strong>PERCENTAGE: </strong>${percentage.toFixed(2)}%</p>
+             <p><strong>SUGGESTION: </strong><span>${suggestion}</span></p>
+            </centre>
+            <img  id="image" src="https://img.freepik.com/free-vector/hand-drawn-report-card-illustration_23-2150994837.jpg?semt=ais_hybrid&w=740&q=80">
+        `;
+              x.style.display='block';
+              
+        }    
+       
+        </script>
+         
+    </body>
+</html>
